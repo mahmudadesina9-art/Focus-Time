@@ -78,7 +78,7 @@
       #focus-time {
         margin: clamp(28px, 8vw, 44px) 0;
         color: #f8fbff;
-        font-size: clamp(4rem, 19vw, 6.5rem);
+        font-size: clamp(3.2rem, 14vw, 5.5rem);
         font-variant-numeric: tabular-nums;
         font-weight: 650;
         letter-spacing: -0.075em;
@@ -175,7 +175,7 @@
         aria-live="off"
         aria-label="Elapsed focus time"
       >
-        00:00
+        00:00:00
       </div>
       <div class="timer-controls">
         <button id="startBtn" onclick="startTimer()">Start</button>
@@ -198,10 +198,11 @@
     let isRunning = false;
 
     function updateDisplay(totalElapsedTime) {
-      const minutes = Math.floor(totalElapsedTime / 60);
+      const hours = Math.floor(totalElapsedTime / 3600);
+      const minutes = Math.floor(totalElapsedTime / 3600 / 60);
       const seconds = Math.floor(totalElapsedTime % 60);
 
-      focusTime.textContent = `${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
+      focusTime.textContent = `${minutes.toString().padStart(2, "0")}:${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
     }
 
     function startTimer() {
